@@ -1,0 +1,40 @@
+---
+layout: default
+title: 归档
+permalink: /mind/
+---
+<div>
+              <!-- <input class="form-control" type="text" id="js-search__input" placeholder="搜索"> -->
+
+              <!-- <ul class="search__results" id="js-search__results"></ul> -->
+              
+               <input class="form-control" type="text" id="search-input" placeholder="搜索" style="margin-left: 10px;margin-right: 100px;"/>
+               <ul class="search__results" id="results-container"></ul>
+                       <script src="{{ site.baseurl }}/js/super-search.js"></script>
+                <script type="text/javascript">
+                    SimpleJekyllSearch({
+                      searchInput: document.getElementById('search-input'),
+                      resultsContainer: document.getElementById('results-container'),
+                      json: '{{ site.baseurl }}/search.json',
+                      searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
+                      noResultsText: 'No results found',
+                      limit: 10,
+                      fuzzy: false,
+                      exclude: ['Welcome']
+                    })
+                  </script>
+<div class="well">
+    <div class="list-group">
+
+      {% for post in site.posts %}
+       <dd>
+         <div class="posts">
+           <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+           <!-- <span style="float:right">{{ post.date | date:"%Y-%m-%d" }}</span> -->
+           <div/><br />
+         </div>
+       </dd>
+      {% endfor %}
+    </div>
+</div>
+</div>
